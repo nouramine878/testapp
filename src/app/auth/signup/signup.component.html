@@ -1,0 +1,45 @@
+
+
+
+
+
+<body>
+  <div class="row">
+    <div class="col-lg-4 m-auto login">
+      <div class="card mt-5 ">
+        <div class="card-title text-center">
+           <img src="/assets/img/img1.png" alt="img" width="150px" height="150px">
+        </div>
+        <div class="card-body">
+          <form>
+            <div style="width: 30px; height: 30px;"></div>
+            <div class="form-group">
+              
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" [(ngModel)]="email" placeholder="adresse mail">
+              
+            </div>
+            <div style="width: 30px; height: 30px;"></div>
+            <div class="form-group">
+             
+              <input type="password" class="form-control" id="exampleInputPassword1" name="password" [(ngModel)]="password" placeholder="mot de passe ">
+            </div>
+            <div style="width: 30px; height: 30px;"></div>
+            <button type="submit" class="btn btn-primary btn-block" (click)="insertUser()">creer un compte</button>
+            <div style="width: 30px; height: 30px;"></div>
+            <p class="float-right text-white"><a routerLink="">retour</a></p>
+            <div class="alert alert-danger" role="alert" *ngIf="show">
+              {{message}}
+            </div>
+            <div style="width: 30px; height: 30px;"></div>
+            
+            
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="width: 115px; height: 115px;"></div>
+</body>
+
+
+

@@ -1,0 +1,43 @@
+<body>
+<div style="width: 50px; height: 50px;"></div>
+<h1>creer un nouveau offre d'emploi</h1>
+<div style="width: 50px; height: 50px;"></div>
+<div class="form__group field">
+  <input type="input" class="form__field" placeholder="titre" name="titre" [(ngModel)]="titre" required />
+  <label for="name" class="form__label">titre</label>
+</div>
+<div style="width: 30px; height: 30px;"></div>
+
+
+
+ <div class="form__group field">
+  <input type="input" class="form__field" placeholder="description"name="description" [(ngModel)]="description" required />
+  <label for="name" class="form__label">description</label>
+</div>
+
+<div style="width: 30px; height: 30px;"></div>
+
+
+ <div class="form__group field">
+  <input type="input" class="form__field" placeholder="compétence" name="competence" [(ngModel)]="competence" required />
+  <label for="name" class="form__label">compétence</label>
+</div>
+<div style="width: 30px; height: 30px;"></div>
+
+
+
+ <div class="form__group field">
+  <input type="input" class="form__field" placeholder="type contrat" name="type_contrat" [(ngModel)]="salaire" required />
+  <label for="name" class="form__label">salaire</label>
+</div>
+
+<div style="width: 30px; height: 30px;"></div>
+
+
+ <div class="form__group field">
+  <input type="input" class="form__field" placeholder="type contrat" name="type_contrat" [(ngModel)]="type_contrat" required />
+  <label for="name" class="form__label">type contrat</label>
+</div>
+<div style="width: 30px; height: 30px;"></div>
+<button type="button" class="btn btn-primary btn-lg" (click)="onCreate()" >créer un offre</button>
+</body>

@@ -1,0 +1,115 @@
+
+
+<div style="width: 100px; height: 100px;"></div>
+<h1>Les demandes</h1>
+<div style="width: 100px; height: 100px;"></div>
+  <table class="table table-hover">
+    <thead>
+      <tr >
+        <th scope="col">id-offre</th>
+        <th scope="col">prenom candidat</th>
+        <th scope="col">nom candidat </th>
+        <th scope="col">specialite </th>
+        <th scope="col">competence </th>
+        <th scope="col">mail candidat </th>
+        <th scope="col">consulter </th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let item1 of itemArray1">
+      <tr *ngFor="let item of itemArray">
+        <th scope="row" *ngIf="item1.$key === item.id_offre"><a (click)="openModalWithClass(template1)">{{item.id_offre}}</a></th>
+        <td *ngIf="item1.$key === item.id_offre">{{item.prenom_condidat}}</td>
+        <td *ngIf="item1.$key === item.id_offre">{{item.nom_condidat}}</td>
+        <td *ngIf="item1.$key === item.id_offre">{{item.specialite}}</td>
+        <td *ngIf="item1.$key === item.id_offre">{{item.competence}}</td>
+        <td *ngIf="item1.$key === item.id_offre">{{item.mail_contact}}</td>
+        <td *ngIf="item1.$key === item.id_offre"><button class="btn btn-primary" (click)="openModalWithClass(template2)"> consulter demande </button></td>
+        <ng-template #template1>  
+            <div class="modal-header">  
+              <h4 class="modal-title pull-left">information sur l'offre </h4>  
+              <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">  
+                <span aria-hidden="true">×</span>  
+              </button>  
+            </div>  
+            <div class="modal-body">  
+              
+              <div><h4>titre de l'offre :</h4>{{item1.titre}}</div>
+              <div><h4>description de l'offre :</h4>{{item1.description}}</div>
+              <div><h4>compétence recquis :</h4>{{item1.competence}}</div>
+              <div><h4>salaire :</h4>{{item1.salaire}}</div>
+              <div><h4>type contrat :</h4>{{item1.type_contrat}}</div>
+        
+            </div>  
+            <div class="modal-footer">  
+              <button type="button" class="btn btn-primary" (click)="modalRef.hide()">fermer</button>  
+              
+            </div> 
+          </ng-template>
+
+          <ng-template #template2>  
+            <div class="modal-header">  
+              <h4 class="modal-title pull-left">prise de la décision </h4>  
+              <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">  
+                <span aria-hidden="true">×</span>  
+              </button>  
+            </div>  
+            <div class="modal-body">  
+
+              <form>
+                <div class="row">
+                  <div class="col">
+                   <center> <button class="btn btn-success " (click) = "show()">accepter demande</button></center>
+                  </div>
+                  <div class="col">
+                    <center><button class="btn btn-danger" (click)="onRejectDemande(item.$key ,item1.$key,  item.mail_contact
+                      ,item.nom_condidat
+                      ,item.prenom_condidat,
+                      item.specialite,
+                      item.competence,
+                      item.user_id)">refuser demande</button></center>
+                  </div>
+                </div>
+              </form>
+              
+              
+              
+              <div *ngIf="shown">
+                <form>
+                  <div style="width: 50px; height: 50px;"></div>
+                  <div class="row">
+                    <div class="col">
+                      <label for="date" >lieu du rendez vous </label>
+                      <input type="text" class="form-control" placeholder="place du rendez vous" name="lieu" [(ngModel)]="lieu" >
+                    </div>
+                    <div class="col">
+                      <label for="date" >date du rendez vous </label>
+                <input type="date" id="date" class="form-control" name="dateMeet" [(ngModel)]="dateMeet">
+                    </div>
+                  </div>
+                </form>
+      
+              </div>
+
+
+
+        
+            </div>  
+            <div class="modal-footer">  
+              <button type="button" class="btn btn-primary" (click)="modalRef.hide()" (click)="onPrintDate(item.$key,item1.$key,
+              item.mail_contact
+              ,item.nom_condidat
+              ,item.prenom_condidat,
+              item.specialite,
+              item.competence,
+              item.user_id)">envoyer</button>  
+              
+            </div> 
+          </ng-template>
+          
+    
+    </tr>  
+    </tbody>
+  </table>
+  
+
+  

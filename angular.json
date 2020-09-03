@@ -50,9 +50,13 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/bootstrap/js/src/modal.js" ,
+              "node_modules/jquery/dist/jquery.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -145,6 +149,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "testapp"
+    }
+  },
+  "defaultProject": "testapp",
+  "cli": {
+    "analytics": "6eade933-8da0-42a1-b4c8-61808a7319d2"
+  }
 }

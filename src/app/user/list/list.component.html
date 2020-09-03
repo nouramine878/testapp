@@ -1,0 +1,71 @@
+<div style="width: 100px; height: 100px;"></div>
+<h1>liste d'offre d'emploi disponible</h1>
+<div style="width: 50px; height: 50px;"></div>
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">titre</th>
+        <th scope="col">description</th>
+        <th scope="col">compétence</th>
+        <th scope="col">salaire</th>
+        <th scope="col">type contrat</th>
+        <th scope="col">postuler</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor = "let item of itemArray ">
+        <th scope="row">{{item.titre}}</th>
+        <td>{{item.description}}</td>
+        <td>{{item.competence}}</td>
+        <td>{{item.salaire}}</td>
+        <td>{{item.type_contrat}}</td>
+        <td>
+          <button type="button" class="btn btn-primary" (click)="openModalWithClass(template)"  
+          (click)="editForm(item.$key)">postuler</button> 
+        </td>
+            
+
+        <ng-template #template>  
+          <div class="modal-header">  
+            <h4 class="modal-title pull-left">remplir ce formulaire</h4>  
+            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">  
+              <span aria-hidden="true">×</span>  
+            </button>  
+          </div>  
+          <div class="modal-body">  
+            
+            <form>
+                <div class="form-group">
+                  <input type="text" class="form-control" id="formGroupExampleInput" placeholder="votre nom" name="nom" [(ngModel)]="nom">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="votre prénom"name="prenom"  [(ngModel)]="prenom">
+                </div>
+            
+                <div class="form-group">
+                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="vos compétences" name="competence"  [(ngModel)]="competence" >
+                  </div>
+            
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="votre spécialité" name="specialite"  [(ngModel)]="specialite"  >
+                  </div>
+            
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="formroupExampleInput2" placeholder="mail de contact " name="mail"  [(ngModel)]="mail">
+                  </div>
+         
+              </form>
+          </div>  
+          <div class="modal-footer">  
+            <button type="button" class="btn btn-primary" (click)="modalRef.hide()">annuler</button>  
+            <button type="button" class="btn btn-primary" (click)="modalRef.hide()" (click)="addDemande(item.$key)">confirmer votre demande</button> 
+          
+          </div> 
+        </ng-template> 
+
+
+
+      </tr>
+    </tbody>
+  </table>

@@ -1,0 +1,69 @@
+
+<div style="width: 100px; height: 100px;"></div>
+<h1>Vos demandes</h1>
+<div style="width: 100px; height: 100px;"></div>
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">id_demande</th>
+        <th scope="col">id_offre</th>
+        <th scope="col">etat_demande</th>
+        <th scope="col">option</th>
+        
+      </tr>
+    </thead>
+    <tbody >
+      <tr *ngFor = "let item of itemArray " >
+        <th  *ngIf ="item.user_id === user_id">{{item.$key}}</th>
+        <td *ngIf ="item.user_id === user_id">{{item.id_offre}}</td>
+        <td *ngIf ="item.user_id === user_id" >{{item.etat}}</td>
+        <td *ngIf ="item.user_id === user_id"><button class="btn btn-danger"  (click)="openModalWithClass(template3)">supprimer votre demande</button></td>
+        <td *ngIf ="item.etat === 'demande accepter' && item.user_id === user_id"><button class="btn btn-primary"
+          (click)="openModalWithClass(template2)"  >voir detail</button></td>
+
+
+      
+        <ng-template #template2>  
+          <div class="modal-header">  
+            <h4 class="modal-title pull-left">Félicitation  </h4>  
+            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">  
+              <span aria-hidden="true">×</span>  
+            </button>  
+          </div>  
+          <div class="modal-body" > 
+            <div    *ngFor ="let item2 of itemArray2"> 
+              <div *ngIf = "item2.id_demande === item.$key">  Félicitaion votre demande au poste d'identifiant <h6>{{item.id_offre}}</h6> a été pris en consideration .
+              Priére d'arriver a l'adresse suivante : {{item2.lieu}} , a la date suivante : {{item2.date}} , pour avoir faire une entretien technique </div>
+             
+            </div>
+          </div>  
+          <div class="modal-footer">  
+            <button type="button" class="btn btn-primary" (click)="modalRef.hide()">fermer</button>  
+           
+          </div> 
+        </ng-template>
+
+
+
+
+
+        <ng-template #template3>  
+          <div class="modal-header">  
+            <h4 class="modal-title pull-left"> attention !!! </h4>  
+            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">  
+              <span aria-hidden="true">×</span>  
+            </button>  
+          </div>  
+          <div class="modal-body" > 
+            <div class="alert alert-danger" role="alert">si vous supprimer cette demande vos données seront supprimer automatiquement</div>
+          </div>  
+          <div class="modal-footer">  
+            <button type="button" class="btn btn-primary" (click)="modalRef.hide()" (click)="onDeleteDemande(item.$key)">supprimer</button>  
+           
+          </div> 
+        </ng-template>
+    
+      </tr>
+     
+    </tbody>
+  </table>
